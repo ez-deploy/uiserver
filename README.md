@@ -1,4 +1,4 @@
-# uiserver
+# easy-deploy
 
 ## Project setup
 ```
