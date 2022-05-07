@@ -1,14 +1,47 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/ui',
+    name: 'ui',
+    component: () => import('../views/view-holder.vue'),
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        component: () => import('../views/index.vue')
+      },
+      {
+        path: 'project/list',
+        name: 'projectlist',
+        component: () => import('../views/project/project-list.vue')
+      },
+      {
+        path: 'project/show/:id',
+        name: 'projectshow',
+        component: () => import('../views/project/project-show.vue')
+      },
+      {
+        path: "service/show/:id",
+        name: "serviceshow",
+        component: () => import('../views/service/service-show.vue'),
+        children: [
+          {
+            path: 'info',
+            name: 'serviceinfo',
+            component: () => import('../views/service/service-info.vue')
+          },
+          {
+            path: 'version',
+            name: 'serviceversion',
+            component: () => import('../views/service/service-version.vue')
+          }
+        ]
+      }
+    ]
   },
   {
     path: '/user',
@@ -26,17 +59,7 @@ const routes = [
         component: () => import('../views/user/create.vue')
       },
     ]
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    components: {
-      default: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    }
-  },
+  }
 ]
 
 const router = new VueRouter({

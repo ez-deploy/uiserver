@@ -23,6 +23,15 @@ Vue.prototype.$baseAPIClient.enableCookies = true
 Vue.prototype.$identityClient = new EzDeployApiserver.IdentityApi()
 Vue.prototype.$identityClient.apiClient = Vue.prototype.$baseAPIClient
 
+Vue.prototype.$projectClient = new EzDeployApiserver.ProjectApi()
+Vue.prototype.$projectClient.apiClient = Vue.prototype.$baseAPIClient
+
+Vue.prototype.$rbacClient = new EzDeployApiserver.RBACApi()
+Vue.prototype.$rbacClient.apiClient = Vue.prototype.$baseAPIClient
+
+Vue.prototype.$serviceClient = new EzDeployApiserver.ServiceApi()
+Vue.prototype.$serviceClient.apiClient = Vue.prototype.$baseAPIClient
+
 new Vue({
   router,
   render: h => h(App)

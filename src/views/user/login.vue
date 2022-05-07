@@ -2,10 +2,10 @@
   <div>
     <div class="icon-holder">
       <img src="../../assets/full-icon.svg"/>
+    
     </div>
 
-    <h1>Sign in</h1>
-
+    <h1 class="sign-in-title">Sign in</h1>
     <t-card 
       class="login-card"
       shadow
@@ -80,7 +80,7 @@ export default {
         } else {
           console.log(data, response)
           MessagePlugin.success("login success, welcome back");
-          _this.$router.push('/');
+          _this.$router.push('/ui/index');
         }
       }
 
@@ -99,15 +99,10 @@ export default {
 }
 
 .sign-in-title {
-    margin-bottom: 1em;
-    font-size: 2rem;
-    color: #3d64ea;
-}
-
-.sign-in-title {
   margin-bottom: 1em;
   font-size: 2rem;
-  color: #3d64ea;
+  color: #191918;
+  text-align: center;
 }
 
 .label {

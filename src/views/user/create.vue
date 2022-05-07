@@ -4,7 +4,7 @@
       <img src="../../assets/full-icon.svg"/>
     </div>
 
-    <h1>Sign up</h1>
+    <h1 class="sign-up-title">Sign up</h1>
 
     <t-card 
       class="login-card"
@@ -20,7 +20,7 @@
         class="input-block"
         placeholder=""
         size="large"
-        v-model="user.username"
+        v-model="user.user_name"
       >
       </t-input>
 
@@ -77,7 +77,7 @@ export default {
   name: 'create',
   data() {
     let user = new EzDeployApiserver.UserInfo();
-    user.username = user.email = user.password = ""
+    user.user_name = user.email = user.password = ""
     return {
       user: user
     }
@@ -110,16 +110,11 @@ export default {
   height: 15vh;
 }
 
-.sign-in-title {
-    margin-bottom: 1em;
-    font-size: 2rem;
-    color: #3d64ea;
-}
-
-.sign-in-title {
+.sign-up-title {
   margin-bottom: 1em;
   font-size: 2rem;
-  color: #3d64ea;
+  color: #191918;
+  text-align: center;
 }
 
 .label {
