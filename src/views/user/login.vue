@@ -80,7 +80,7 @@ export default {
         } else {
           console.log(data, response)
           MessagePlugin.success("login success, welcome back");
-          _this.$router.push('/ui/index');
+          _this.$router.push('/ui/project/list');
         }
       }
 

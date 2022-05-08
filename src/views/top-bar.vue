@@ -6,7 +6,7 @@
       alt="logo"
       width="158px"
       class="icon"
-      @click="$router.push('/ui/index')"
+      @click="$router.push('/ui/project/list')"
       src="../assets/full-icon.svg"
     />
     <!-- ops -->
@@ -88,12 +88,12 @@ export default {
         this.$identityClient.logout(callback)
       },
       gotoHomePage: function () {
-        if (this.$route.path === "/ui/index") {
+        if (this.$route.path === "/ui/project/list") {
           MessagePlugin.info('Already in home page')
           return;
         }
 
-        this.$router.push("/ui/index")
+        this.$router.push("/ui/project/list")
       },
     }
 }

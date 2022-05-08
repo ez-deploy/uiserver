@@ -216,7 +216,7 @@ export default {
   flex-direction: row;
   align-content: flex-end;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -226,6 +226,8 @@ export default {
 
   margin-bottom: 1vh;
   margin-top: 1vh;
+  margin-left: 0.3vw;
+  margin-right: 0.3vw;
 }
 
 .project-name {

@@ -127,6 +127,12 @@
           <div v-else-if="row.status === 'Failed'" style="color: #e34d59">● Failed </div>
           <div v-else-if="row.status === 'Unkonwn'" style="color: #f2995f">● Unkonwn </div>
         </template>
+
+        <template #operation="slotProps">
+          <div v-if="slotProps.status === undefined">
+            <t-button class="link" @click="handleSSH(slotProps)">SSH</t-button>
+          </div>
+        </template>
       </t-table>
     </t-card>
   </div>
@@ -159,6 +165,13 @@ let table_cols = [
     width: '100',
     colKey: 'status',
     title: 'Status'
+  },
+  {
+    colKey: 'operation',
+    title: 'Operation',
+    width: 100,
+    cell: 'operation',
+    fixed: 'right',
   },
 ]
 
@@ -214,6 +227,25 @@ export default {
     }
   },
   methods: {
+    handleSSH(pod_info) {
+      let _this = this
+      let callback = function (err, data, resp) {
+        if (err) {
+          MessagePlugin.error("get visit pod ticket error" + err)
+        } else {
+          let ticket = data.ticket
+          MessagePlugin.success("get visit ticket ok, open terminal")
+          window.open("/term?ticket_value=" + ticket)
+        }
+      }
+
+      let req = new EzDeployApiserver.GetTicketReq()
+
+      req.project_id = this.project_info.id
+      req.pod_name = pod_info.row.name
+
+      this.$podTicketClient.createPodTicket(req, callback)
+    },
     fetch_pods_info() {
       let _this = this
       let callback = function (err, data, resp) {
@@ -227,6 +259,7 @@ export default {
       this.$serviceClient.listServicePod(Number(this.$route.params.id), callback)
     },
     update_service_info() {
+      let _this = this
       let callback = function (err, data, resp) {
         let _this = this
         if (err) {
@@ -372,7 +405,7 @@ export default {
   flex-direction: row;
   align-content: flex-end;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -382,6 +415,8 @@ export default {
 
   margin-bottom: 1vh;
   margin-top: 1vh;
+  margin-left: 0.3vw;
+  margin-right: 0.3vw;
 }
 
 .project-name {

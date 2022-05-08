@@ -32,6 +32,10 @@ Vue.prototype.$rbacClient.apiClient = Vue.prototype.$baseAPIClient
 Vue.prototype.$serviceClient = new EzDeployApiserver.ServiceApi()
 Vue.prototype.$serviceClient.apiClient = Vue.prototype.$baseAPIClient
 
+Vue.prototype.$podTicketClient = new EzDeployApiserver.PodApi()
+Vue.prototype.$podTicketClient.apiClient = Vue.prototype.$baseAPIClient
+
+
 new Vue({
   router,
   render: h => h(App)

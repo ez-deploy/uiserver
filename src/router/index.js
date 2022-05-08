@@ -59,6 +59,11 @@ const routes = [
         component: () => import('../views/user/create.vue')
       },
     ]
+  },
+  {
+    path: '/term',
+    name: 'term',
+    component: () => import('../views/service/term.vue')
   }
 ]
 
